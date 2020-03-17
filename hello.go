@@ -13,4 +13,5 @@ const (
 func main() {
 	rand.Seed(RandomSpeed)
 	fmt.Println("Hello world!", rand.Intn(RandomN))
+	fmt.Printf("Random int: %v\n", rand.Intn(RandomN))
 }
