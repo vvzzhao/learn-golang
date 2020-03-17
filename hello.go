@@ -5,6 +5,12 @@ import (
 	"math/rand"
 )
 
+const (
+	RandomN     = 3927
+	RandomSpeed = 39
+)
+
 func main() {
-	fmt.Println("Hello world!",rand.Intn(3927))
+	rand.Seed(RandomSpeed)
+	fmt.Println("Hello world!", rand.Intn(RandomN))
 }
