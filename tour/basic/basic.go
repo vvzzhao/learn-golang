@@ -41,6 +41,8 @@ func main() {
 	varDef()
 	fmt.Println()
 	basicTypes()
+	fmt.Println()
+	zeroValue()
 }
 
 func add(x, y int) int {
@@ -78,24 +80,35 @@ func basicTypes() {
 	i8 := int8(123)
 	var i16 int16 = 123
 	// int int8 int16 int32 int64
-	// uint uint8 uint16 uint32 uint64
+	// uint uint8 uint16 uint32 uint64 uintptr
+	// int, uint 和 uintptr 在 32 位系统上通常为 32 位宽，在 64 位系统上则为 64 位宽。
 	f32 := float32(123.123)
 	f64 := 123.123
 	var c64 complex64 = 123 + 3i //c64 := complex64(123 + 3i)
 	c128 := 123 + 3i
 
-	printTypeAndValue("bool",a)
-	printTypeAndValue("string",b)
-	printTypeAndValue("int",i32)
-	printTypeAndValue("int8",i8)
-	printTypeAndValue("int16",i16)
-	printTypeAndValue("float32",f32)
-	printTypeAndValue("float64",f64)
-	printTypeAndValue("complex64",c64)
-	printTypeAndValue("complex128",c128)
+	printTypeAndValue("bool", a)
+	printTypeAndValue("string", b)
+	printTypeAndValue("int", i32)
+	printTypeAndValue("int8", i8)
+	printTypeAndValue("int16", i16)
+	printTypeAndValue("float32", f32)
+	printTypeAndValue("float64", f64)
+	printTypeAndValue("complex64", c64)
+	printTypeAndValue("complex128", c128)
 	fmt.Println("==========================")
 }
 
 func printTypeAndValue(expectType string, a interface{}) {
 	fmt.Printf("Expect Type: %s ,Type: %T Value: %v\n", expectType, a, a)
+}
+
+func zeroValue() {
+	fmt.Println("=========  零值  =========")
+	var i int
+	var f float64
+	var b bool
+	var s string
+	fmt.Printf("int: %v, float64: %v, bool: %v, string: %q\n", i, f, b, s)
+	fmt.Println("==========================")
 }
