@@ -43,6 +43,8 @@ func main() {
 	basicTypes()
 	fmt.Println()
 	zeroValue()
+	fmt.Println()
+	constVar()
 }
 
 func add(x, y int) int {
@@ -77,6 +79,7 @@ func varDef() {
 func basicTypes() {
 	fmt.Println("========= 基本类型 =========")
 	a, b, i32 := true, "str", 123
+	// 在不同类型的项之间赋值时需要显式转换
 	i8 := int8(123)
 	var i16 int16 = 123
 	// int int8 int16 int32 int64
@@ -111,4 +114,39 @@ func zeroValue() {
 	var s string
 	fmt.Printf("int: %v, float64: %v, bool: %v, string: %q\n", i, f, b, s)
 	fmt.Println("==========================")
+}
+
+// 常量不可以用 := 语法生命
+const Pi = 3.1415926
+
+const (
+	// 将 1 左移 100 位来创建一个非常大的数字
+	// 即这个数的二进制是 1 后面跟着 100 个 0
+	Big = 1 << 100
+	// 再往右移 99 位，即 Small = 1 << 1，或者说 Small = 2
+	Small = Big >> 99
+)
+
+func constVar() {
+	fmt.Println("=========  常量  =========")
+	const World = "世界"
+	fmt.Println("Hello", World)
+	fmt.Println("Happy", Pi, "Day")
+
+	const Truth = true
+	fmt.Println("Go rules?", Truth)
+
+	// 一个未指定类型的常量由上下文来决定其类型。
+	fmt.Println("needInt Small", needInt(Small))
+	fmt.Println("needFloat Small", needFloat(Small))
+	fmt.Println("needFloat Big", needFloat(Big))
+	fmt.Println("==========================")
+}
+
+func needInt(x int) int {
+	return x*10 + 1
+}
+
+func needFloat(x float64) float64 {
+	return x * 0.1
 }
